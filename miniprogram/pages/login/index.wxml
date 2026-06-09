@@ -1,0 +1,53 @@
+<view class="screen">
+  <view class="hero login-hero">
+    <navigation-bar back="{{false}}" color="#ffffff" background="transparent"></navigation-bar>
+    <view class="hero-body login-head">
+      <view class="brand-mark">
+        <view class="brand-logo"></view>
+      </view>
+      <view class="brand-name">InfiniSynapse</view>
+      <view class="hero-title">高考报考选校助手</view>
+      <view class="hero-sub">输入省份、分数或位次，AI 生成冲稳保报考方案</view>
+    </view>
+  </view>
+
+  <view class="content">
+    <view class="card login-card">
+      <view class="tip">登录需获取你的手机号，用于保存报考记录</view>
+
+      <button
+        class="btn-primary phone-btn"
+        open-type="getPhoneNumber"
+        bind:getphonenumber="onGetPhoneNumber"
+        loading="{{logging}}"
+        disabled="{{logging}}"
+      >
+        一键登录
+      </button>
+
+      <view class="agreement">登录即表示同意《用户协议》和《隐私政策》</view>
+    </view>
+
+    <view class="card features-card">
+      <view class="feature">
+        <view class="feature-dot"></view>
+        <view class="feature-key">一分不丢</view>
+        <view class="feature-text">按位次卡线</view>
+      </view>
+      <view class="feature-divider"></view>
+      <view class="feature">
+        <view class="feature-dot"></view>
+        <view class="feature-key">稳录不滑</view>
+        <view class="feature-text">冲稳保梯度</view>
+      </view>
+      <view class="feature-divider"></view>
+      <view class="feature">
+        <view class="feature-dot"></view>
+        <view class="feature-key">专业避坑</view>
+        <view class="feature-text">退档早预警</view>
+      </view>
+    </view>
+
+    <view class="login-footer">Powered By InfiniSynapse</view>
+  </view>
+</view>

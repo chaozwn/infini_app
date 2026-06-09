@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/gaokao/index",
+    "pages/gaokao/result",
+    "pages/history/index",
+    "pages/profile/index",
+    "pages/login/index",
+    "pages/webview/index"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "高考报考选校",
+    "backgroundColor": "#f4f4f5"
+  },
+  "tabBar": {
+    "color": "#9ca3af",
+    "selectedColor": "#b08d4a",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/gaokao/index",
+        "text": "选校"
+      },
+      {
+        "pagePath": "pages/history/index",
+        "text": "历史"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

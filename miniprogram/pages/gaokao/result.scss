@@ -1,0 +1,160 @@
+.result-hero .hero-row {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 0;
+  gap: 24rpx;
+}
+
+.spinner {
+  width: 56rpx;
+  height: 56rpx;
+  border: 6rpx solid #e4e4e7;
+  border-top-color: #b08d4a;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.spinner.small {
+  width: 36rpx;
+  height: 36rpx;
+  border-width: 4rpx;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.summary-line {
+  font-size: 27rpx;
+  color: #374151;
+  margin-bottom: 12rpx;
+}
+
+.message {
+  font-size: 26rpx;
+  color: #3f3f46;
+  line-height: 1.6;
+}
+
+.generating {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-top: 24rpx;
+}
+
+.error-box {
+  margin-top: 20rpx;
+  padding: 22rpx;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 16rpx;
+  font-size: 26rpx;
+}
+
+.pdf-card {
+  border: 2rpx solid #e4e4e7;
+  background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+}
+
+.pdf-head {
+  display: flex;
+  align-items: center;
+  gap: 22rpx;
+}
+
+.pdf-emoji {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 22rpx;
+  background: #ffffff;
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+  flex: none;
+}
+
+.pdf-info {
+  flex: 1;
+}
+
+.md {
+  display: block;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-size: 27rpx;
+  line-height: 1.7;
+  color: #1f2937;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* AI 思考过程：整体调暗，和最终结果区分 */
+.md.thinking {
+  color: #9ca3af;
+  font-size: 26rpx;
+}
+
+/* PDF 操作区：下载/预览 与 进入 InfiniSynapse 同行等宽 */
+.pdf-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 24rpx;
+}
+
+.btn-action {
+  flex: 1;
+  min-width: 0;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding: 0 6rpx;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 24rpx;
+  font-weight: 600;
+  border-radius: 999rpx;
+}
+
+.btn-action::after {
+  border: none;
+}
+
+/* 下载 / 预览：次要按钮（描边） */
+.btn-action-ghost {
+  background: #ffffff;
+  color: #2c2614;
+  border: 2rpx solid #d8c79b;
+}
+
+.btn-action-ghost[disabled] {
+  background: #f4f4f5;
+  color: #a1a1aa;
+  border-color: #e4e4e7;
+}
+
+/* 进入 InfiniSynapse：主按钮（填充） */
+.btn-action-app {
+  background: linear-gradient(135deg, #6e5a28 0%, #2c2614 58%, #0c0a06 100%);
+  color: #f5e8cf;
+  box-shadow: 0 12rpx 28rpx rgba(40, 30, 10, 0.28);
+}
+
+.btn-action-app-hover {
+  opacity: 0.92;
+  box-shadow: 0 8rpx 20rpx rgba(40, 30, 10, 0.34);
+}

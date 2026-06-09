@@ -1,0 +1,89 @@
+.profile-hero {
+  padding-bottom: 110rpx;
+}
+
+.profile-head {
+  display: flex;
+  align-items: center;
+  gap: 28rpx;
+  padding-top: 16rpx;
+}
+
+.avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255, 255, 255, 0.4);
+  flex: none;
+}
+
+.avatar-default {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.avatar-icon {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.info {
+  flex: 1;
+}
+
+.nick {
+  font-size: 38rpx;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.phone {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.menu {
+  padding: 8rpx 30rpx;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  font-size: 29rpx;
+  color: #1f2937;
+}
+
+.menu-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.menu-divider {
+  height: 2rpx;
+  background: #f1f5f9;
+}
+
+.arrow {
+  color: #cbd5e1;
+  font-size: 36rpx;
+}
+
+.logout-text {
+  color: #dc2626;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40rpx;
+}

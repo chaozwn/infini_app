@@ -1,0 +1,71 @@
+<view class="screen">
+  <view class="hero result-hero">
+    <navigation-bar title="报考方案" back="{{true}}" color="#ffffff" background="transparent"></navigation-bar>
+    <view class="hero-body" wx:if="{{record}}">
+      <view class="hero-row">
+        <view class="hero-title">报考方案</view>
+        <text class="status {{record.status}}">{{statusText}}</text>
+      </view>
+      <view class="hero-sub">
+        <text wx:if="{{record.province}}">{{record.province}}</text>
+        <text wx:if="{{record.score}}"> · 分数 {{record.score}}</text>
+        <text wx:if="{{record.rank}}"> · 位次 {{record.rank}}</text>
+      </view>
+    </view>
+    <view class="hero-body" wx:else>
+      <view class="hero-title">报考方案</view>
+      <view class="hero-sub">正在加载...</view>
+    </view>
+  </view>
+
+  <view class="content">
+    <view wx:if="{{loading && !record}}" class="loading">
+      <view class="spinner"></view>
+      <text class="muted">正在加载报考方案...</text>
+    </view>
+
+    <block wx:if="{{record}}">
+      <view wx:if="{{record.targetSchool || record.message}}" class="card">
+        <view wx:if="{{record.targetSchool}}" class="summary-line">目标校：{{record.targetSchool}}</view>
+        <view wx:if="{{record.message}}" class="message">{{record.message}}</view>
+
+        <view wx:if="{{record.status === 'pending' || record.status === 'submitted'}}" class="generating">
+          <view class="spinner small"></view>
+          <text class="muted">AI 正在查询录取数据并生成冲稳保方案，请稍候...</text>
+        </view>
+
+        <view wx:if="{{record.status === 'failed'}}" class="error-box">
+          {{record.error || '生成失败，请稍后重试。'}}
+        </view>
+      </view>
+
+      <view wx:if="{{record.pdfReady}}" class="card pdf-card">
+        <view class="pdf-head">
+          <text class="pdf-emoji">📄</text>
+          <view class="pdf-info">
+            <view class="card-title">PDF 报告已生成</view>
+            <view class="card-sub">完整排版的报考方案，可下载预览。</view>
+          </view>
+        </view>
+        <view class="pdf-actions">
+          <button class="btn-action btn-action-ghost" loading="{{downloading}}" disabled="{{downloading}}" bindtap="onDownloadPdf">
+            {{downloading ? '正在下载...' : '下载 / 预览 PDF'}}
+          </button>
+          <button
+            wx:if="{{record.status === 'completed' && record.shareUrl}}"
+            class="btn-action btn-action-app"
+            hover-class="btn-action-app-hover"
+            bindtap="onOpenApp"
+          >进入 InfiniSynapse</button>
+        </view>
+      </view>
+
+      <view wx:if="{{htmlContent && record.resultSource === 'last_message'}}" class="card">
+        <view class="section-label">AI 思考过程</view>
+        <rich-text class="md thinking" nodes="{{htmlContent}}"></rich-text>
+      </view>
+
+      <button wx:if="{{!(record.status === 'completed' && record.shareUrl)}}" class="btn-ghost" bindtap="refresh">刷新状态</button>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,130 @@
+<view class="screen">
+  <view class="hero">
+    <navigation-bar title="高考报考选校" back="{{false}}" color="#ffffff" background="transparent"></navigation-bar>
+    <view class="hero-body">
+      <view class="hero-title">生成冲稳保方案</view>
+      <view class="hero-sub">填写省份、分数或位次，AI 帮你判断能不能报</view>
+    </view>
+  </view>
+
+  <view class="content">
+    <view class="card">
+      <view class="section-label">快速示例</view>
+      <view class="examples">
+        <view
+          class="tag"
+          wx:for="{{examples}}"
+          wx:key="targetSchool"
+          data-index="{{index}}"
+          bindtap="applyExample"
+        >{{item.province}} · {{item.targetSchool}}</view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-label">基本信息</view>
+      <view class="row">
+        <view class="col field">
+          <text class="field-label">考生省份 *</text>
+          <picker mode="selector" range="{{provinceOptions}}" value="{{provinceIndex}}" data-field="province" data-options="provinceOptions" bindchange="onPickerChange">
+            <view class="field-picker {{form.province ? '' : 'placeholder'}}">
+              <text>{{form.province || '请选择'}}</text>
+              <text class="chevron">▾</text>
+            </view>
+          </picker>
+        </view>
+        <view class="col field">
+          <text class="field-label">报考年份</text>
+          <input class="field-input" value="{{form.examYear}}" data-field="examYear" bindinput="onInput" placeholder="例如 2026" />
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="col field">
+          <text class="field-label">科类/选科</text>
+          <picker mode="selector" range="{{trackOptions}}" value="{{trackIndex}}" data-field="track" data-options="trackOptions" bindchange="onPickerChange">
+            <view class="field-picker {{form.track ? '' : 'placeholder'}}">
+              <text>{{form.track || '请选择'}}</text>
+              <text class="chevron">▾</text>
+            </view>
+          </picker>
+        </view>
+        <view class="col field">
+          <text class="field-label">批次</text>
+          <picker mode="selector" range="{{batchOptions}}" value="{{batchIndex}}" data-field="batch" data-options="batchOptions" bindchange="onPickerChange">
+            <view class="field-picker {{form.batch ? '' : 'placeholder'}}">
+              <text>{{form.batch || '请选择'}}</text>
+              <text class="chevron">▾</text>
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="col field">
+          <text class="field-label">高考分数</text>
+          <input class="field-input" type="number" value="{{form.score}}" data-field="score" bindinput="onInput" placeholder="例如 610" />
+        </view>
+        <view class="col field">
+          <text class="field-label">省排名/位次</text>
+          <input class="field-input" type="number" value="{{form.rank}}" data-field="rank" bindinput="onInput" placeholder="例如 18000" />
+        </view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-label">报考意向</view>
+      <view class="field">
+        <text class="field-label">目标学校</text>
+        <input class="field-input" value="{{form.targetSchool}}" data-field="targetSchool" bindinput="onInput" placeholder="例如 浙江大学、川大、西电" />
+      </view>
+
+      <view class="field">
+        <text class="field-label">目标专业</text>
+        <input class="field-input" value="{{form.targetMajor}}" data-field="targetMajor" bindinput="onInput" placeholder="例如 计算机、临床、法学" />
+      </view>
+
+      <view class="field">
+        <text class="field-label">城市偏好</text>
+        <input class="field-input" value="{{form.cityPreference}}" data-field="cityPreference" bindinput="onInput" placeholder="例如 杭州优先，接受南京/武汉" />
+      </view>
+
+      <view class="field">
+        <text class="field-label">风险偏好</text>
+        <picker mode="selector" range="{{riskOptions}}" value="{{riskIndex}}" data-field="riskLevel" data-options="riskOptions" bindchange="onPickerChange">
+          <view class="field-picker">
+            <text>{{form.riskLevel}}</text>
+            <text class="chevron">▾</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="field">
+        <text class="field-label">家庭约束</text>
+        <input class="field-input" value="{{form.familyConstraints}}" data-field="familyConstraints" bindinput="onInput" placeholder="例如 预算有限，希望离家近" />
+      </view>
+
+      <view class="field" style="margin-bottom: 0;">
+        <text class="field-label">补充说明</text>
+        <textarea class="field-textarea" value="{{form.notes}}" data-field="notes" bindinput="onInput" placeholder="例如 帮我判断目标学校能不能报，列出冲稳保学校，优先避免调剂到冷门专业。" />
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-label">决策优先级</view>
+      <view class="priorities">
+        <view
+          class="tag {{item.active ? 'active' : ''}}"
+          wx:for="{{priorityList}}"
+          wx:key="name"
+          data-name="{{item.name}}"
+          bindtap="onTogglePriority"
+        >{{item.name}}</view>
+      </view>
+    </view>
+
+    <button class="btn-primary" loading="{{submitting}}" disabled="{{submitting}}" bindtap="onSubmit">
+      {{submitting ? '正在生成...' : '生成报考方案'}}
+    </button>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+<web-view wx:if="{{url && !loadError}}" src="{{url}}" binderror="onError"></web-view>
+
+<view wx:if="{{loadError}}" class="fallback">
+  <view class="fallback-emoji">🔗</view>
+  <view class="fallback-title">页面打开失败</view>
+  <view class="fallback-tip">可能是业务域名未配置。你可以复制链接，到手机浏览器中打开查看完整任务。</view>
+  <view class="fallback-url">{{url}}</view>
+  <button class="fallback-btn" bindtap="onCopyLink">复制链接</button>
+</view>

@@ -1,0 +1,255 @@
+/* 全局样式 - 现代渐变风格 */
+page {
+  background-color: #f4f4f5;
+  font-size: 28rpx;
+  color: #18181b;
+  --primary: #111827;
+  --primary-2: #000000;
+  --accent: #c5a05a;
+  --ink: #0a0a0a;
+  --muted: #71717a;
+}
+
+/* 整页容器 */
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 顶部渐变 hero（沉浸式，导航栏叠在其上） */
+.hero {
+  position: relative;
+  background: linear-gradient(160deg, #6e5a28 0%, #241f12 36%, #0c0a06 78%);
+  padding-bottom: 96rpx;
+}
+
+.hero-body {
+  padding: 8rpx 44rpx 0;
+}
+
+.hero-title {
+  font-size: 46rpx;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1rpx;
+}
+
+.hero-sub {
+  margin-top: 14rpx;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.6;
+}
+
+/* 内容区：圆角上浮，盖住 hero 底部 */
+.content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  margin-top: -64rpx;
+  padding: 32rpx 28rpx 48rpx;
+  background: #f4f4f5;
+  border-radius: 40rpx 40rpx 0 0;
+}
+
+/* 卡片 */
+.card {
+  background: #ffffff;
+  border-radius: 28rpx;
+  padding: 34rpx 30rpx;
+  margin-bottom: 26rpx;
+  box-shadow: 0 12rpx 40rpx rgba(0, 0, 0, 0.06);
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8rpx;
+}
+
+.card-sub {
+  font-size: 24rpx;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.section-label {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 18rpx;
+  display: flex;
+  align-items: center;
+}
+
+.section-label::before {
+  content: '';
+  width: 8rpx;
+  height: 28rpx;
+  border-radius: 4rpx;
+  margin-right: 14rpx;
+  background: linear-gradient(180deg, #c5a05a, #8a6d2f);
+}
+
+/* 表单 */
+.field {
+  margin-bottom: 28rpx;
+}
+
+.field-label {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 14rpx;
+  display: block;
+}
+
+.field-input,
+.field-picker {
+  width: 100%;
+  box-sizing: border-box;
+  height: 92rpx;
+  line-height: 92rpx;
+  padding: 0 26rpx;
+  background: #f5f7fb;
+  border: 2rpx solid #eaeef5;
+  border-radius: 18rpx;
+  font-size: 28rpx;
+  color: #111827;
+}
+
+.field-picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.field-picker.placeholder {
+  color: #9ca3af;
+}
+
+.field-picker .chevron {
+  color: #9ca3af;
+  font-size: 22rpx;
+}
+
+.field-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 180rpx;
+  padding: 22rpx 26rpx;
+  background: #f5f7fb;
+  border: 2rpx solid #eaeef5;
+  border-radius: 18rpx;
+  font-size: 28rpx;
+}
+
+/* 按钮 */
+.btn-primary {
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #6e5a28 0%, #2c2614 58%, #0c0a06 100%);
+  color: #f5e8cf;
+  font-size: 31rpx;
+  font-weight: 600;
+  border-radius: 999rpx;
+  box-shadow: 0 16rpx 32rpx rgba(40, 30, 10, 0.3);
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-primary[disabled] {
+  background: #d4d4d8;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.btn-ghost {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+  background: #ffffff;
+  color: #18181b;
+  font-size: 28rpx;
+  border: 2rpx solid #d4d4d8;
+  border-radius: 999rpx;
+}
+
+.btn-ghost::after {
+  border: none;
+}
+
+/* 标签 */
+.tag {
+  display: inline-block;
+  padding: 14rpx 28rpx;
+  margin: 0 18rpx 18rpx 0;
+  border-radius: 999rpx;
+  font-size: 26rpx;
+  border: 2rpx solid #e5e7eb;
+  color: #374151;
+  background: #ffffff;
+  transition: all 0.15s;
+}
+
+.tag.active {
+  background: linear-gradient(135deg, #6e5a28, #2c2614);
+  color: #f5e8cf;
+  border-color: transparent;
+  box-shadow: 0 8rpx 20rpx rgba(40, 30, 10, 0.24);
+}
+
+.row {
+  display: flex;
+  gap: 22rpx;
+}
+
+.row .col {
+  flex: 1;
+  min-width: 0;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 24rpx;
+}
+
+/* 状态徽标 */
+.status {
+  display: inline-block;
+  padding: 8rpx 22rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.status.pending,
+.status.submitted {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status.completed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status.failed {
+  background: #fee2e2;
+  color: #991b1b;
+}
