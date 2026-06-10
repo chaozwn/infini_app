@@ -4,7 +4,6 @@
     "pages/gaokao/result",
     "pages/history/index",
     "pages/profile/index",
-    "pages/login/index",
     "pages/webview/index"
   ],
   "window": {

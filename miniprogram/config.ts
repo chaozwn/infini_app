@@ -30,4 +30,4 @@ export const USER_KEY = 'wx_mini_user'
 // 分享配置（小程序卡片：标题 + 打开路径；卡片本身即链接，无需再带网址）
 export const SHARE_TITLE =
   '2026高考志愿还没想好怎么填？试下 InfiniSynapse 高考选校 AI：输分数/位次和目标校，直接出冲稳保分析 PDF，数据有据可查，限时免费不用注册'
-export const SHARE_PATH = '/pages/login/index'
+export const SHARE_PATH = '/pages/gaokao/index'

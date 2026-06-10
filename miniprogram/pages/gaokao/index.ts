@@ -1,4 +1,4 @@
-import { ensureLogin } from '../../utils/auth'
+import { ensureAuth } from '../../utils/auth'
 import { request } from '../../utils/request'
 import { SHARE_PATH, SHARE_TITLE } from '../../config'
 
@@ -96,7 +96,7 @@ Page({
   },
 
   onShow() {
-    ensureLogin()
+    ensureAuth()
     wx.showShareMenu({ menus: ['shareAppMessage', 'shareTimeline'] })
   },
 
@@ -165,6 +165,12 @@ Page({
 
     this.setData({ submitting: true })
     try {
+      // 兜底：启动时静默登录失败（如网络抖动）则在提交前重试
+      const ok = await ensureAuth()
+      if (!ok) {
+        wx.showToast({ title: '网络异常，请稍后重试', icon: 'none' })
+        return
+      }
       const res = await request<{ recordId: string; status: string }>({
         url: '/api/mini/gaokao/submit',
         method: 'POST',

@@ -67,5 +67,7 @@
 
       <button wx:if="{{!(record.status === 'completed' && record.shareUrl)}}" class="btn-ghost" bindtap="refresh">刷新状态</button>
     </block>
+
+    <view class="ai-footer">本内容由 AI 生成</view>
   </view>
 </view>

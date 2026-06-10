@@ -45,6 +45,23 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
+.bind-btn {
+  flex: none;
+  margin: 0;
+  padding: 0 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  border: 2rpx solid rgba(255, 255, 255, 0.5);
+
+  &::after {
+    border: none;
+  }
+}
+
 .menu {
   padding: 8rpx 30rpx;
 }

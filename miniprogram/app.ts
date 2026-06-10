@@ -1,8 +1,10 @@
 // app.ts
+import { ensureAuth } from './utils/auth'
+
 App<IAppOption>({
   globalData: {},
   onLaunch() {
-    // 预热微信登录态（实际登录在登录页通过手机号授权完成）
-    wx.login({ success: () => {} })
+    // 启动即静默匿名登录（按 openid 建档），用户无感知，无登录墙
+    ensureAuth()
   },
 })

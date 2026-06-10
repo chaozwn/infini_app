@@ -7,9 +7,19 @@
         <image class="avatar-icon" src="/assets/icons/user.svg" />
       </view>
       <view class="info">
-        <view class="nick">{{user.nickName || '微信用户'}}</view>
-        <view class="phone">{{phoneText || '未绑定手机号'}}</view>
+        <view class="nick">{{user.nickName || (guest ? '游客用户' : '微信用户')}}</view>
+        <view class="phone">{{guest ? '游客模式' : (phoneText || '未绑定手机号')}}</view>
       </view>
+      <button
+        wx:if="{{guest}}"
+        class="bind-btn"
+        open-type="getPhoneNumber"
+        bind:getphonenumber="onBindPhone"
+        loading="{{binding}}"
+        disabled="{{binding}}"
+      >
+        绑定手机号
+      </button>
     </view>
   </view>
 
@@ -27,16 +37,6 @@
         <view class="menu-left">
           <image class="menu-icon" src="/assets/icons/target.svg" />
           <text>生成新方案</text>
-        </view>
-        <text class="arrow">›</text>
-      </view>
-    </view>
-
-    <view class="card menu">
-      <view class="menu-item" bindtap="onLogout">
-        <view class="menu-left">
-          <image class="menu-icon" src="/assets/icons/logout.svg" />
-          <text class="logout-text">退出登录</text>
         </view>
         <text class="arrow">›</text>
       </view>

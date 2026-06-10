@@ -8,6 +8,11 @@
   </view>
 
   <view class="content">
+    <view wx:if="{{guest}}" class="guest-banner" bindtap="goBindPhone">
+      <text>当前为游客身份，绑定手机号后可跨设备同步记录</text>
+      <text class="guest-banner-action">去绑定 ›</text>
+    </view>
+
     <view wx:if="{{!loading && list.length === 0}}" class="empty">
       <view class="empty-icon">📋</view>
       <text class="muted">还没有报考记录</text>

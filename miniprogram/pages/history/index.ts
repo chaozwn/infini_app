@@ -1,4 +1,4 @@
-import { ensureLogin } from '../../utils/auth'
+import { ensureAuth, isGuest } from '../../utils/auth'
 import { request } from '../../utils/request'
 
 interface HistoryItem {
@@ -50,10 +50,16 @@ Page({
     page: 1,
     total: 0,
     hasMore: true,
+    guest: false,
   },
 
-  onShow() {
-    if (!ensureLogin()) return
+  async onShow() {
+    const ok = await ensureAuth()
+    this.setData({ guest: isGuest() })
+    if (!ok) {
+      wx.showToast({ title: '网络异常，请下拉重试', icon: 'none' })
+      return
+    }
     this.reload()
   },
 
@@ -108,5 +114,9 @@ Page({
 
   goCreate() {
     wx.switchTab({ url: '/pages/gaokao/index' })
+  },
+
+  goBindPhone() {
+    wx.switchTab({ url: '/pages/profile/index' })
   },
 })

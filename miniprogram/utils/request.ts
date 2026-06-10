@@ -12,20 +12,10 @@ export interface RequestOptions {
   data?: Record<string, unknown>
 }
 
-let redirectingToLogin = false
-
 function handleAuthFailure() {
-  console.warn('[auth] 收到登录失效(code:800)，清除 token 并跳回登录页')
+  console.warn('[auth] 收到登录失效(code:800)，清除 token，下次 ensureAuth 时静默重新匿名登录')
   wx.removeStorageSync(TOKEN_KEY)
   wx.removeStorageSync(USER_KEY)
-  if (redirectingToLogin) return
-  redirectingToLogin = true
-  wx.reLaunch({
-    url: '/pages/login/index',
-    complete: () => {
-      redirectingToLogin = false
-    },
-  })
 }
 
 export function request<T>(options: RequestOptions): Promise<T> {

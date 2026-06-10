@@ -1,3 +1,22 @@
+.guest-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+  margin-bottom: 22rpx;
+  padding: 20rpx 26rpx;
+  border-radius: 16rpx;
+  background: #fdf6e9;
+  border: 2rpx solid #f0e0c0;
+  font-size: 24rpx;
+  color: #8a6d2f;
+}
+
+.guest-banner-action {
+  flex: none;
+  font-weight: 600;
+}
+
 .empty {
   display: flex;
   flex-direction: column;
