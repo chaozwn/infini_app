@@ -1,5 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="12" cy="12" r="10"/>
-  <circle cx="12" cy="12" r="6"/>
-  <circle cx="12" cy="12" r="2"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="tgt-g" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c5a05a"/>
+      <stop offset="1" stop-color="#8a6d2f"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="14" fill="url(#tgt-g)" fill-opacity="0.12"/>
+  <g stroke="url(#tgt-g)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="24" cy="24" r="9.5"/>
+    <circle cx="24" cy="24" r="4.5"/>
+  </g>
+  <circle cx="24" cy="24" r="1.6" fill="url(#tgt-g)"/>
 </svg>

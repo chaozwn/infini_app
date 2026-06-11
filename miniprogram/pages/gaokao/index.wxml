@@ -127,4 +127,29 @@
       {{submitting ? '正在生成...' : '生成报考方案'}}
     </button>
   </view>
+
+  <view class="login-mask" wx:if="{{showLogin}}" bindtap="onCloseLogin">
+    <view class="login-sheet" catchtap="noop">
+      <view class="login-close" bindtap="onCloseLogin">✕</view>
+      <view class="login-title">登录后即可生成方案</view>
+      <view class="login-desc">报考方案会保存到你的账号，方便随时查看历史记录和下载 PDF 报告。我们只用手机号识别身份，不会对外泄露。</view>
+      <view class="login-tips">
+        <view class="login-tip">· 一键授权，无需输入验证码</view>
+        <view class="login-tip">· 历史方案自动关联，换设备不丢失</view>
+        <view class="login-tip">· 仅用于登录，不会发送营销短信</view>
+      </view>
+      <view class="login-actions">
+        <view class="login-cancel" bindtap="onCloseLogin">暂不登录</view>
+        <button
+          class="btn-primary login-btn"
+          open-type="getPhoneNumber"
+          bind:getphonenumber="onPhoneLogin"
+          loading="{{phoneLogging}}"
+          disabled="{{phoneLogging}}"
+        >
+          {{phoneLogging ? '登录中...' : '手机号一键登录并生成'}}
+        </button>
+      </view>
+    </view>
+  </view>
 </view>

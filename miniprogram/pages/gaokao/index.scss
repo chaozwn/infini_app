@@ -3,3 +3,90 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+/* 登录引导弹窗 */
+.login-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: flex-end;
+}
+
+.login-sheet {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 40rpx 40rpx 0 0;
+  padding: 52rpx 44rpx calc(44rpx + env(safe-area-inset-bottom));
+}
+
+.login-close {
+  position: absolute;
+  top: 28rpx;
+  right: 32rpx;
+  width: 56rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 28rpx;
+  color: #9ca3af;
+  background: #f4f4f5;
+}
+
+.login-title {
+  font-size: 36rpx;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.login-desc {
+  margin-top: 18rpx;
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #52525b;
+}
+
+.login-tips {
+  margin: 26rpx 0 40rpx;
+  padding: 24rpx 28rpx;
+  background: #faf7f0;
+  border: 2rpx solid #efe6d3;
+  border-radius: 20rpx;
+}
+
+.login-tip {
+  font-size: 24rpx;
+  line-height: 1.9;
+  color: #8a6d2f;
+}
+
+.login-actions {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.login-btn {
+  width: auto;
+  flex: 1;
+  min-width: 0;
+  padding: 0 32rpx;
+}
+
+.login-cancel {
+  flex: none;
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  height: 96rpx;
+  line-height: 92rpx;
+  text-align: center;
+  font-size: 27rpx;
+  color: #71717a;
+  background: #ffffff;
+  border: 2rpx solid #d4d4d8;
+  border-radius: 999rpx;
+}

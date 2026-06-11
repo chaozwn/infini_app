@@ -1,4 +1,4 @@
-import { ensureAuth } from '../../utils/auth'
+import { ensureAuth, getUserInfo, login } from '../../utils/auth'
 import { request } from '../../utils/request'
 import { SHARE_PATH, SHARE_TITLE } from '../../config'
 
@@ -64,6 +64,9 @@ interface TagEvent {
 interface ExampleEvent {
   currentTarget: { dataset: { index: number } }
 }
+interface PhoneNumberEvent {
+  detail: { errMsg: string; code?: string }
+}
 
 Page({
   data: {
@@ -93,6 +96,8 @@ Page({
     riskIndex: riskOptions.indexOf('稳妥为主'),
     priorityList: buildPriorityList(DEFAULT_PRIORITIES),
     submitting: false,
+    showLogin: false,
+    phoneLogging: false,
   },
 
   onShow() {
@@ -150,18 +155,36 @@ Page({
     })
   },
 
-  async onSubmit() {
-    const { form, submitting } = this.data
-    const priorities = this.data.priorityList.filter(item => item.active).map(item => item.name)
-    if (submitting) return
+  validateForm(): boolean {
+    const { form } = this.data
     if (!form.province.trim()) {
       wx.showToast({ title: '请选择考生省份', icon: 'none' })
-      return
+      return false
     }
     if (!form.score.trim() && !form.rank.trim() && !form.targetSchool.trim()) {
       wx.showToast({ title: '请填写分数、位次或目标学校', icon: 'none' })
+      return false
+    }
+    return true
+  },
+
+  async onSubmit() {
+    if (this.data.submitting) return
+    if (!this.validateForm()) return
+
+    // 生成方案要求手机号登录：未绑定手机号时先弹登录引导
+    const user = getUserInfo()
+    if (!user || !user.phone) {
+      this.setData({ showLogin: true })
       return
     }
+    await this.doSubmit()
+  },
+
+  async doSubmit() {
+    if (this.data.submitting) return
+    const { form } = this.data
+    const priorities = this.data.priorityList.filter(item => item.active).map(item => item.name)
 
     this.setData({ submitting: true })
     try {
@@ -181,6 +204,35 @@ Page({
       wx.showToast({ title: (err as Error).message || '提交失败', icon: 'none' })
     } finally {
       this.setData({ submitting: false })
+    }
+  },
+
+  onCloseLogin() {
+    this.setData({ showLogin: false })
+  },
+
+  noop() {
+    // 阻止弹窗内容区点击冒泡关闭
+  },
+
+  // 手机号一键登录：授权成功后自动继续生成报考方案
+  async onPhoneLogin(e: PhoneNumberEvent) {
+    if (!e.detail.code) {
+      wx.showToast({ title: '需授权手机号后才能生成方案', icon: 'none' })
+      return
+    }
+    if (this.data.phoneLogging) return
+
+    this.setData({ phoneLogging: true })
+    try {
+      // 携带 phoneCode 登录，后端按同一 openid 合并游客账号与历史记录
+      await login({ phoneCode: e.detail.code })
+      this.setData({ showLogin: false })
+      await this.doSubmit()
+    } catch (err) {
+      wx.showToast({ title: (err as Error).message || '登录失败，请重试', icon: 'none' })
+    } finally {
+      this.setData({ phoneLogging: false })
     }
   },
 })
