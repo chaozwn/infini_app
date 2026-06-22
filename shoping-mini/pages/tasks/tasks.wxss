@@ -1,0 +1,28 @@
+.page-title {
+  margin: 8rpx 0 24rpx;
+}
+
+.task-item .task-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.empty-card {
+  text-align: center;
+  padding: 64rpx 32rpx;
+}
+
+.empty-emoji {
+  font-size: 80rpx;
+}
+
+.empty-text {
+  margin-top: 24rpx;
+  color: #5b4f47;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.empty-btn {
+  margin-top: 32rpx;
+}

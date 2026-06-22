@@ -1,0 +1,82 @@
+.page-title {
+  margin-top: 8rpx;
+  margin-bottom: 24rpx;
+}
+
+.status-card {
+  background: #fff6f3;
+  border-color: #f3c6bc;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+}
+
+.spinner {
+  width: 36rpx;
+  height: 36rpx;
+  border: 5rpx solid #f3c6bc;
+  border-top-color: #e6442e;
+  border-radius: 50%;
+  margin-right: 18rpx;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.status-text {
+  flex: 1;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2a2a2a;
+}
+
+.status-card .muted {
+  margin-top: 14rpx;
+}
+
+.done-card .muted {
+  margin-top: 14rpx;
+}
+
+.step-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+}
+
+.thinking-item {
+  font-size: 26rpx;
+  color: #5b4f47;
+  line-height: 1.6;
+  padding: 12rpx 0;
+}
+
+.thinking-item + .thinking-item {
+  border-top: 1rpx solid #f5ece6;
+}
+
+.report {
+  max-height: 720rpx;
+  background: #f8f2ec;
+  border-radius: 14rpx;
+  padding: 20rpx;
+}
+
+.report-text {
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #2a2a2a;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+}

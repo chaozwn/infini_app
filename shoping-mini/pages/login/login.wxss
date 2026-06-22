@@ -1,0 +1,70 @@
+.hero {
+  padding: 48rpx 8rpx 24rpx;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 52rpx;
+  padding: 0 22rpx;
+  border-radius: 999rpx;
+  background: #fff;
+  border: 1rpx solid #f3d9d2;
+  color: #e6442e;
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.hero .title {
+  margin-top: 24rpx;
+  font-size: 56rpx;
+  line-height: 1.2;
+}
+
+.hero .subtitle {
+  margin-top: 16rpx;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  padding: 14rpx 0;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.feature-item + .feature-item {
+  border-top: 1rpx solid #f5ece6;
+}
+
+.feature-emoji {
+  margin-right: 16rpx;
+  font-size: 34rpx;
+}
+
+.login-card {
+  margin-top: 24rpx;
+}
+
+.step-title {
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.login-card .muted {
+  margin-top: 12rpx;
+}
+
+.login-btn {
+  margin-top: 28rpx;
+}
+
+.footer {
+  margin-top: 40rpx;
+  text-align: center;
+}
+
+.debug-step {
+  margin-top: 24rpx;
+  opacity: 0.5;
+}

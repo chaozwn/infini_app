@@ -1,0 +1,70 @@
+.page-title {
+  margin-top: 8rpx;
+}
+
+.subtitle {
+  margin: 12rpx 0 24rpx;
+}
+
+.field + .field {
+  margin-top: 24rpx;
+}
+
+.label {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2a2a2a;
+  margin-bottom: 12rpx;
+}
+
+.req {
+  color: #e6442e;
+}
+
+.input {
+  background: #f8f2ec;
+  border-radius: 14rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+}
+
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: #f8f2ec;
+  border-radius: 14rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  height: 140rpx;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.chip {
+  padding: 14rpx 28rpx;
+  border-radius: 999rpx;
+  background: #f4ece6;
+  color: #5b4f47;
+  font-size: 26rpx;
+  border: 1rpx solid #ece0d8;
+}
+
+.chip-on {
+  background: #e6442e;
+  color: #fff;
+  border-color: #e6442e;
+}
+
+.submit-btn {
+  margin-top: 32rpx;
+  width: 100%;
+}
+
+.submit-btn::after {
+  border: none;
+}

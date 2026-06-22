@@ -1,0 +1,72 @@
+<view class="page">
+  <view class="title page-title">填写购物需求</view>
+  <view class="subtitle">AI 会用 PC 端 Chrome 插件跨平台比价、读差评、加购物车（不会下单付款）。</view>
+
+  <view class="card">
+    <view class="field">
+      <view class="label">想买什么 <text class="req">*</text></view>
+      <input class="input" placeholder="例如：降噪耳机 / 送男友的生日礼物" value="{{form.item}}" data-field="item" bindinput="onInput" />
+    </view>
+
+    <view class="field">
+      <view class="label">使用场景</view>
+      <textarea class="textarea" placeholder="例如：通勤地铁用，戴眼镜，怕夹耳朵" value="{{form.scenario}}" data-field="scenario" bindinput="onInput" maxlength="500" />
+    </view>
+
+    <view class="field">
+      <view class="label">预算</view>
+      <input class="input" placeholder="例如：500 元以内 / 不限" value="{{form.budget}}" data-field="budget" bindinput="onInput" />
+    </view>
+
+    <view class="field">
+      <view class="label">必须满足</view>
+      <input class="input" placeholder="例如：主动降噪、续航≥20h" value="{{form.mustHave}}" data-field="mustHave" bindinput="onInput" />
+    </view>
+
+    <view class="field">
+      <view class="label">明确不要</view>
+      <input class="input" placeholder="例如：不要入耳式、不要杂牌" value="{{form.avoid}}" data-field="avoid" bindinput="onInput" />
+    </view>
+
+    <view class="field">
+      <view class="label">给谁用</view>
+      <input class="input" placeholder="例如：本人 / 送朋友" value="{{form.recipient}}" data-field="recipient" bindinput="onInput" />
+    </view>
+
+    <view class="field">
+      <view class="label">最晚使用时间</view>
+      <input class="input" placeholder="例如：本周末前到货" value="{{form.deadline}}" data-field="deadline" bindinput="onInput" />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="label">看重什么</view>
+    <view class="chips">
+      <view
+        class="chip {{selectedPriorities.indexOf(item) >= 0 ? 'chip-on' : ''}}"
+        wx:for="{{priorityOptions}}"
+        wx:key="*this"
+        data-label="{{item}}"
+        bindtap="togglePriority"
+      >{{item}}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="label">已在 PC Chrome 登录的购物网站 <text class="req">*</text></view>
+    <view class="muted">只勾选你已经登录的平台，AI 才能进去比价。</view>
+    <view class="chips">
+      <view
+        class="chip {{selectedSites.indexOf(item.id) >= 0 ? 'chip-on' : ''}}"
+        wx:for="{{sites}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="toggleSite"
+      >{{item.label}}</view>
+    </view>
+  </view>
+
+  <button class="btn btn-primary submit-btn" loading="{{submitting}}" disabled="{{submitting}}" bindtap="submit">
+    提交给 AI 开始比价
+  </button>
+</view>

@@ -1,0 +1,48 @@
+<view class="page">
+  <view class="title page-title">在 PC 端开始购物</view>
+  <view class="subtitle">AI 购物需要桌面 Chrome 和浏览器插件，手机端负责账号与引导。</view>
+
+  <view wx:if="{{!bound}}" class="card warn-card">
+    <view class="muted">当前手机号还没有关联到 InfiniSynapse 账号。请先在 PC 端用同一手机号注册/绑定。</view>
+    <view class="link-row">
+      <text class="link-text">{{registerUrl}}</text>
+      <button class="btn-copy" data-url="{{registerUrl}}" bindtap="copyUrl">复制</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="step-title">购物页地址</view>
+    <view class="muted">在 PC 端 Chrome 打开下面的地址：</view>
+    <view class="link-row">
+      <text class="link-text">{{pcShoppingUrl}}</text>
+      <button class="btn-copy" data-url="{{pcShoppingUrl}}" bindtap="copyUrl">复制</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="step-title">操作步骤</view>
+    <view class="steps">
+      <view class="step-item" wx:for="{{steps}}" wx:key="*this">
+        <view class="step-no">{{index + 1}}</view>
+        <view class="step-text">{{item}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="step-title">插件安装文档</view>
+    <view class="muted">不会装插件？查看图文教程：</view>
+    <view class="link-row">
+      <text class="link-text">{{pluginDocUrl}}</text>
+      <button class="btn-copy" data-url="{{pluginDocUrl}}" bindtap="copyUrl">复制</button>
+    </view>
+  </view>
+
+  <view wx:if="{{bound}}" class="card detect-card">
+    <view class="step-title">完成后点这里检测</view>
+    <view class="muted">在 PC 端登录账号并安装插件后，点击下方按钮检测连接，成功后即可填写购物需求。</view>
+    <button class="btn btn-primary detect-btn" loading="{{detecting}}" disabled="{{detecting}}" bindtap="detectPlugin">
+      检测插件连接
+    </button>
+  </view>
+</view>

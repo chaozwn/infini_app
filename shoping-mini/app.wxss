@@ -1,0 +1,100 @@
+/**app.wxss**/
+page {
+  background: #fff7f2;
+  color: #0a0a0a;
+  font-size: 28rpx;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+}
+
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 32rpx 32rpx calc(48rpx + env(safe-area-inset-bottom));
+}
+
+/* 通用卡片 */
+.card {
+  background: #ffffff;
+  border: 1rpx solid #f0e3da;
+  border-radius: 20rpx;
+  padding: 32rpx;
+  box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.03);
+}
+
+.card + .card {
+  margin-top: 24rpx;
+}
+
+/* 通用按钮 */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 92rpx;
+  border-radius: 16rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.btn-primary {
+  background: #e6442e;
+  color: #ffffff;
+}
+
+.btn-primary[disabled] {
+  background: #e7c9c2;
+  color: #fff;
+}
+
+.btn-dark {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+.btn-ghost {
+  background: #ffffff;
+  color: #0a0a0a;
+  border: 1rpx solid #e4d8cf;
+}
+
+.btn + .btn {
+  margin-top: 20rpx;
+}
+
+.muted {
+  color: #8a8079;
+  font-size: 24rpx;
+  line-height: 1.6;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #555;
+  line-height: 1.6;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 48rpx;
+  padding: 0 20rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.tag-emerald {
+  background: #e9f8f0;
+  color: #0f7a52;
+}
+
+.tag-amber {
+  background: #fff4e0;
+  color: #9a6a00;
+}

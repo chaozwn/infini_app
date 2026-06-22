@@ -1,0 +1,30 @@
+<view class="page">
+  <view class="card account-card">
+    <view class="account-row">
+      <view class="avatar">🛒</view>
+      <view class="account-info">
+        <view class="account-phone">{{account.phone || '未获取手机号'}}</view>
+        <view wx:if="{{bound}}" class="tag tag-emerald">已关联 InfiniSynapse 账号</view>
+        <view wx:elif="{{needBindPhone}}" class="tag tag-amber">未授权手机号</view>
+        <view wx:else class="tag tag-amber">手机号未匹配到账号</view>
+      </view>
+    </view>
+
+    <view wx:if="{{needBindPhone}}" class="account-tip">
+      <view class="muted">还没授权手机号，无法关联账号。</view>
+      <button class="btn btn-primary tip-btn" bindtap="bindPhone">去授权手机号</button>
+    </view>
+    <view wx:elif="{{!bound}}" class="account-tip">
+      <view class="muted">该手机号还没有 InfiniSynapse 账号，请在 PC 端用同一手机号注册/绑定。</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="step-title">开始 AI 购物</view>
+    <view class="muted">AI 购物在 PC 端 Chrome 里运行：装好插件、用同一账号登录，就能让 AI 帮你比价、读差评、加购物车（不付款）。</view>
+    <button class="btn btn-dark action-btn" bindtap="goGuide">去 PC 安装插件并开始</button>
+    <button class="btn btn-ghost action-btn" bindtap="goTasks">查看购物任务</button>
+  </view>
+
+  <button class="btn btn-ghost logout-btn" bindtap="logout">退出登录</button>
+</view>

@@ -1,0 +1,53 @@
+<view class="page">
+  <view class="hero">
+    <view class="badge">🛒 InfiniSynapse</view>
+    <view class="title">省钱比价助手</view>
+    <view class="subtitle">让 AI 帮你跨平台比价、读差评、算券后到手价，少花冤枉钱。</view>
+  </view>
+
+  <view class="card">
+    <view class="feature">
+      <view class="feature-item">
+        <text class="feature-emoji">💰</text>
+        <text>券后到手价，满减运费一起算</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-emoji">🔀</text>
+        <text>京东、淘宝、天猫同款比价</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-emoji">🛡️</text>
+        <text>差评追评先看，避坑不踩雷</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card login-card">
+    <view wx:if="{{step === 'login'}}">
+      <view class="step-title">第 1 步 · 登录账号</view>
+      <view class="muted">使用微信快速登录，并关联你的 InfiniSynapse 账号。</view>
+      <button class="btn btn-dark login-btn" loading="{{logging}}" bindtap="doWxLogin">
+        微信一键登录
+      </button>
+    </view>
+
+    <view wx:if="{{step === 'phone'}}">
+      <view class="step-title">第 2 步 · 授权手机号</view>
+      <view class="muted">通过手机号关联你在 InfiniSynapse 的账号。我们只用于账号匹配。</view>
+      <button
+        class="btn btn-primary login-btn"
+        open-type="getPhoneNumber"
+        loading="{{binding}}"
+        bindgetphonenumber="onGetPhone"
+      >
+        授权手机号并继续
+      </button>
+    </view>
+
+    <view class="muted debug-step">当前步骤(调试)：{{step}}</view>
+  </view>
+
+  <view class="footer muted">
+    AI 购物实际在 PC 端 Chrome 中执行，登录后会引导你完成。
+  </view>
+</view>

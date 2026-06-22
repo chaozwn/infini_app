@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/home/home",
+    "pages/guide/guide",
+    "pages/shopping/shopping",
+    "pages/result/result",
+    "pages/tasks/tasks"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "省钱比价助手",
+    "navigationBarBackgroundColor": "#fff7f2",
+    "backgroundColor": "#fff7f2"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

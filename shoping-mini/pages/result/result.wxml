@@ -1,0 +1,35 @@
+<view class="page">
+  <view class="title page-title">AI 比价进行中</view>
+
+  <view wx:if="{{!finished}}" class="card status-card">
+    <view class="status-row">
+      <view class="spinner"></view>
+      <view class="status-text">AI 正在 PC 端跨平台比价、读差评、加购物车…</view>
+    </view>
+    <view class="muted">可以留在此页等待结果，也可以去 PC 端实时查看画面。</view>
+  </view>
+
+  <view wx:if="{{finished}}" class="card done-card">
+    <view class="tag tag-emerald">已完成</view>
+    <view class="muted">下面是 AI 给出的购物报告。敏感操作（下单/付款）需你在 PC 端确认。</view>
+  </view>
+
+  <view wx:if="{{thinkingSteps.length > 0 && !finished}}" class="card">
+    <view class="step-title">思考过程</view>
+    <view class="thinking">
+      <view class="thinking-item" wx:for="{{thinkingSteps}}" wx:key="id">{{item.text}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{resultContent}}" class="card">
+    <view class="step-title">{{finished ? '购物报告' : '最新进展'}}</view>
+    <scroll-view scroll-y class="report">
+      <text class="report-text" user-select decode space="nbsp">{{resultContent}}</text>
+    </scroll-view>
+  </view>
+
+  <view class="card actions">
+    <button wx:if="{{appUrl}}" class="btn btn-ghost" bindtap="copyAppUrl">复制 PC 查看链接</button>
+    <button class="btn btn-dark" bindtap="again">再比一单</button>
+  </view>
+</view>
