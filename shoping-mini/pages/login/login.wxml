@@ -43,8 +43,6 @@
         授权手机号并继续
       </button>
     </view>
-
-    <view class="muted debug-step">当前步骤(调试)：{{step}}</view>
   </view>
 
   <view class="footer muted">

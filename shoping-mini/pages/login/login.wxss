@@ -69,8 +69,3 @@
   margin-top: 40rpx;
   text-align: center;
 }
-
-.debug-step {
-  margin-top: 24rpx;
-  opacity: 0.4;
-}

@@ -28,10 +28,21 @@ shoping-mini/
 
 ## 配置
 
-1. `config.js` 里的 `apiBaseUrl` 指向后端 `infini-proxy`：
-   - 本地：`http://localhost:3000/api`（开发者工具勾选「不校验合法域名」）
-   - 线上：换成 https 域名，并在小程序后台「服务器域名」配置 `request` 合法域名。
+1. `config.js` 会根据运行环境自动选择 `apiBaseUrl`：
+   - **开发者工具模拟器**：`http://localhost:3000/api`（需勾选「不校验合法域名」）
+   - **真机预览 / 体验版 / 正式版**：`https://api.infinisynapse.cn/api`
 2. `project.config.json` 中 `appid` 已为 `wxb2593c4dd46cf539`。
+
+### 微信小程序后台 · 服务器域名（国内正式版）
+
+| 类型 | 填写域名（不带 `https://`） |
+|------|------------------------------|
+| request 合法域名 | `api.infinisynapse.cn` |
+| downloadFile 合法域名 | `api.infinisynapse.cn`（截图代理 `/miniapp/shopping/snapshot`） |
+| uploadFile / socket | 暂不需要 |
+| 业务域名 | 暂不需要（无 web-view，链接均为复制到剪贴板） |
+
+> 国内用 `.cn`；`.com` 为海外 API（`api.infinisynapse.com`），小程序在国内勿配。
 
 ## 后端依赖（infini-proxy/packages/server）
 
@@ -47,7 +58,8 @@ shoping-mini/
 | GET | `/api/miniapp/browser-session` | 检测 PC Chrome 插件连接状态，返回 `{ connected, status, ... }` |
 | GET | `/api/miniapp/shopping/sites` | 购物表单可选购物网站列表 |
 | POST | `/api/miniapp/shopping/task` | 提交购物任务（复用 .cn 购物 agent），返回 `{ taskId, status }` |
-| GET | `/api/miniapp/shopping/task?taskId=` | 轮询任务结果（思考过程 + 最终 Markdown 报告） |
+| GET | `/api/miniapp/shopping/task?taskId=` | 轮询任务结果（思考过程 + 最终 Markdown 报告 + 截图路径） |
+| GET | `/api/miniapp/shopping/snapshot?taskId=&file=` | 代理浏览器截图（供小程序 downloadFile） |
 
 ### 后端环境变量（`.env`）
 
