@@ -1,12 +1,27 @@
-<view class="page">
-  <view class="title page-title">AI 比价进行中</view>
+<view class="page result-page">
+  <view class="title page-title">{{finished ? '比价完成' : (paused ? '任务已暂停' : 'AI 比价进行中')}}</view>
 
-  <view wx:if="{{!finished}}" class="card status-card">
+  <view wx:if="{{!finished && !paused}}" class="card status-card">
+    <view class="scanner"><view class="scan-line"></view></view>
     <view class="status-row">
-      <view class="spinner"></view>
-      <view class="status-text">AI 正在 PC 端跨平台比价、读差评、加购物车…</view>
+      <view class="ring"></view>
+      <view class="status-text">AI 正在 PC 端远程执行比价…</view>
+    </view>
+    <view class="work-steps">
+      <view class="work-step"><text class="ws-icon">🔍</text>跨平台比价</view>
+      <view class="work-step"><text class="ws-icon">🛡️</text>读差评避坑</view>
+      <view class="work-step"><text class="ws-icon">🛒</text>自动加购物车</view>
     </view>
     <view class="muted">可以留在此页等待结果，也可以去 PC 端实时查看画面。</view>
+  </view>
+
+  <view wx:if="{{paused}}" class="card paused-card">
+    <view class="paused-row">
+      <view class="paused-icon">⏸</view>
+      <view class="paused-text">{{statusText || '任务已暂停，请到 PC 端 Chrome 查看并继续'}}</view>
+    </view>
+    <view class="muted">在 PC 端处理后会自动继续，本页每隔几秒会自动刷新状态。</view>
+    <button wx:if="{{appUrl}}" class="btn btn-dark paused-btn" bindtap="copyAppUrl">复制 PC 查看链接</button>
   </view>
 
   <view wx:if="{{finished}}" class="card done-card">
@@ -14,16 +29,25 @@
     <view class="muted">下面是 AI 给出的购物报告。敏感操作（下单/付款）需你在 PC 端确认。</view>
   </view>
 
-  <view wx:if="{{thinkingSteps.length > 0 && !finished}}" class="card">
-    <view class="step-title">思考过程</view>
-    <view class="thinking">
-      <view class="thinking-item" wx:for="{{thinkingSteps}}" wx:key="id">{{item.text}}</view>
+  <view wx:if="{{resultContent || screenshots.length}}" class="card progress-card">
+    <view class="progress-head">
+      <view class="progress-head-left">
+        <view wx:if="{{!finished && !paused}}" class="live-dot"></view>
+        <text class="progress-title">{{finished ? '购物报告' : '最新进展'}}</text>
+      </view>
+      <text wx:if="{{!finished && !paused}}" class="progress-tag">实时</text>
     </view>
-  </view>
 
-  <view wx:if="{{resultContent}}" class="card">
-    <view class="step-title">{{finished ? '购物报告' : '最新进展'}}</view>
-    <scroll-view scroll-y class="report">
+    <view wx:if="{{screenshots.length}}" class="shots-wrap">
+      <view class="shots-label">PC 浏览器截图 · 点击放大</view>
+      <scroll-view scroll-x enable-flex class="shots">
+        <view class="shot" wx:for="{{screenshots}}" wx:key="*this" data-url="{{item}}" bindtap="previewShot">
+          <image class="shot-img" src="{{item}}" mode="aspectFill"></image>
+        </view>
+      </scroll-view>
+    </view>
+
+    <scroll-view wx:if="{{resultContent}}" scroll-y class="report">
       <text class="report-text" user-select decode space="nbsp">{{resultContent}}</text>
     </scroll-view>
   </view>

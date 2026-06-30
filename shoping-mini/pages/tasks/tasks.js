@@ -1,38 +1,50 @@
-const { request } = require('../../utils/request')
+const { getTasks, removeTask, clearTasks } = require('../../utils/history')
 
 Page({
   data: {
-    loading: true,
     tasks: [],
-    message: '',
-    pcShoppingUrl: '',
   },
 
-  onLoad() {
+  onShow() {
     this.loadTasks()
   },
 
-  async loadTasks() {
-    this.setData({ loading: true })
-    try {
-      const res = await request({ url: '/miniapp/tasks', auth: true })
-      this.setData({
-        tasks: res.tasks || [],
-        message: res.message || '',
-        pcShoppingUrl: res.pcShoppingUrl || '',
-      })
-    } catch (err) {
-      wx.showToast({ title: err.message || '加载失败', icon: 'none' })
-    } finally {
-      this.setData({ loading: false })
-    }
+  loadTasks() {
+    this.setData({ tasks: getTasks() })
   },
 
-  copyUrl() {
-    if (!this.data.pcShoppingUrl) return
-    wx.setClipboardData({
-      data: this.data.pcShoppingUrl,
-      success: () => wx.showToast({ title: '已复制，去 PC 浏览器打开', icon: 'none' }),
+  openTask(e) {
+    const taskId = e.currentTarget.dataset.taskId
+    if (!taskId) return
+    wx.navigateTo({ url: `/pages/result/result?taskId=${taskId}` })
+  },
+
+  deleteTask(e) {
+    const taskId = e.currentTarget.dataset.taskId
+    if (!taskId) return
+    wx.showModal({
+      title: '删除记录',
+      content: '确定删除这条历史任务吗？（仅删除本地记录）',
+      success: (res) => {
+        if (res.confirm) {
+          removeTask(taskId)
+          this.loadTasks()
+        }
+      },
+    })
+  },
+
+  clearAll() {
+    if (this.data.tasks.length === 0) return
+    wx.showModal({
+      title: '清空历史',
+      content: '确定清空全部本地历史任务吗？',
+      success: (res) => {
+        if (res.confirm) {
+          clearTasks()
+          this.loadTasks()
+        }
+      },
     })
   },
 

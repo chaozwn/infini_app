@@ -8,10 +8,12 @@
     "pages/tasks/tasks"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "navigationBarTitleText": "省钱比价助手",
-    "navigationBarBackgroundColor": "#fff7f2",
-    "backgroundColor": "#fff7f2"
+    "navigationBarBackgroundColor": "#0a0f1f",
+    "backgroundColor": "#060a16",
+    "backgroundColorTop": "#060a16",
+    "backgroundColorBottom": "#060a16"
   },
   "style": "v2",
   "componentFramework": "glass-easel",

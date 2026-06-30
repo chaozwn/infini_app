@@ -1,4 +1,38 @@
 <view class="page">
+  <view class="hero">
+    <view class="hero-badge">🛍️</view>
+    <view class="hero-text">
+      <view class="hero-title neon-text">省钱比价助手</view>
+      <view class="hero-sub">AI · 跨平台比价 · 读差评 · 自动加购物车</view>
+    </view>
+  </view>
+
+  <view class="card link-card">
+    <view class="link-head">
+      <text class="link-head-title">远程购物链路</text>
+      <view class="link-status {{pluginConnected ? 'on' : (pluginChecking ? 'checking' : 'off')}}">
+        <view class="dot"></view>
+        <text>{{pluginConnected ? '已就绪' : (pluginChecking ? '检测中…' : '未连接')}}</text>
+      </view>
+    </view>
+    <view class="link-diagram">
+      <view class="node">
+        <view class="node-icon">📱</view>
+        <text class="node-label">手机</text>
+      </view>
+      <view class="link-line {{pluginConnected ? 'active' : ''}}">
+        <view class="pulse"></view>
+        <view class="pulse p2"></view>
+        <view class="pulse p3"></view>
+      </view>
+      <view class="node">
+        <view class="node-icon">🖥️</view>
+        <text class="node-label">PC 插件</text>
+      </view>
+    </view>
+    <view class="link-tip muted">手机下单需求，PC 端 Chrome 插件远程执行比价与自动加购</view>
+  </view>
+
   <view class="card account-card">
     <view class="account-row">
       <view class="avatar">🛒</view>
@@ -19,12 +53,37 @@
     </view>
   </view>
 
-  <view class="card">
+  <view class="card action-card">
     <view class="step-title">开始 AI 购物</view>
-    <view class="muted">AI 购物在 PC 端 Chrome 里运行：装好插件、用同一账号登录，就能让 AI 帮你比价、读差评、加购物车（不付款）。</view>
-    <button class="btn btn-dark action-btn" bindtap="goGuide">去 PC 安装插件并开始</button>
-    <button class="btn btn-ghost action-btn" bindtap="goTasks">查看购物任务</button>
+    <view class="muted">在 PC 端 Chrome 装好插件、用同一账号登录后，点下方「检测插件」即可开始比价。</view>
+
+    <view class="feature-row">
+      <view class="feature-pill"><text class="fp-icon">🔍</text>AI 比价</view>
+      <view class="feature-pill"><text class="fp-icon">🛡️</text>读差评</view>
+      <view class="feature-pill"><text class="fp-icon">🛒</text>自动加购</view>
+    </view>
+
+    <view class="action-list">
+      <block wx:if="{{bound}}">
+        <button class="btn btn-primary action-btn" bindtap="detectPlugin" loading="{{detecting}}">
+          检测插件并开始比价
+        </button>
+        <button class="btn btn-ghost action-btn" bindtap="goGuide">
+          <text class="btn-emoji">🖥️</text>查看 PC 安装指引
+        </button>
+      </block>
+      <block wx:else>
+        <button class="btn btn-dark action-btn" bindtap="goGuide">
+          <text class="btn-emoji">🖥️</text>去 PC 安装插件并开始
+        </button>
+      </block>
+      <button class="btn btn-ghost action-btn" bindtap="goTasks">
+        <text class="btn-emoji">🧾</text>历史任务
+      </button>
+    </view>
   </view>
 
-  <button class="btn btn-ghost logout-btn" bindtap="logout">退出登录</button>
+  <view class="logout-wrap">
+    <text class="logout-link" bindtap="logout">退出登录</text>
+  </view>
 </view>

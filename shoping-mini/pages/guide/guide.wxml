@@ -2,6 +2,34 @@
   <view class="title page-title">在 PC 端开始购物</view>
   <view class="subtitle">AI 购物需要桌面 Chrome 和浏览器插件，手机端负责账号与引导。</view>
 
+  <view class="card conn-card">
+    <view class="conn-diagram">
+      <view class="conn-node">
+        <view class="conn-icon">📱</view>
+        <text class="conn-label">手机下单</text>
+      </view>
+      <view class="conn-line">
+        <view class="beam"></view>
+        <view class="spark"></view>
+        <view class="spark s2"></view>
+      </view>
+      <view class="conn-node center">
+        <view class="conn-icon big">🧩</view>
+        <text class="conn-label">Chrome 插件</text>
+      </view>
+      <view class="conn-line">
+        <view class="beam"></view>
+        <view class="spark"></view>
+        <view class="spark s2"></view>
+      </view>
+      <view class="conn-node">
+        <view class="conn-icon">🛒</view>
+        <text class="conn-label">自动加购</text>
+      </view>
+    </view>
+    <view class="conn-tip muted">远程链路：手机端下发需求 → PC 插件接管浏览器 → AI 跨平台比价并自动加入购物车</view>
+  </view>
+
   <view wx:if="{{!bound}}" class="card warn-card">
     <view class="muted">当前手机号还没有关联到 InfiniSynapse 账号。请先在 PC 端用同一手机号注册/绑定。</view>
     <view class="link-row">

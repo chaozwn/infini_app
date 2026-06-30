@@ -6,14 +6,125 @@
   margin: 12rpx 0 24rpx;
 }
 
+/* ===== 远程连接示意图 ===== */
+.conn-card {
+  background: linear-gradient(180deg, rgba(20, 40, 70, 0.9) 0%, rgba(14, 22, 44, 0.9) 100%);
+}
+
+.conn-diagram {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.conn-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150rpx;
+  flex-shrink: 0;
+}
+
+.conn-icon {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 22rpx;
+  background: rgba(56, 120, 255, 0.14);
+  border: 1rpx solid rgba(120, 165, 255, 0.32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42rpx;
+}
+
+.conn-icon.big {
+  width: 104rpx;
+  height: 104rpx;
+  font-size: 52rpx;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.22), rgba(139, 92, 255, 0.22));
+  border-color: rgba(95, 230, 255, 0.5);
+  box-shadow: 0 0 28rpx rgba(72, 160, 255, 0.4);
+  animation: hubGlow 2.2s ease-in-out infinite;
+}
+
+@keyframes hubGlow {
+  0%, 100% { box-shadow: 0 0 24rpx rgba(72, 160, 255, 0.3); }
+  50% { box-shadow: 0 0 40rpx rgba(124, 92, 255, 0.6); }
+}
+
+.conn-node.center {
+  width: 170rpx;
+}
+
+.conn-label {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  color: #9aa6cf;
+}
+
+.conn-line {
+  position: relative;
+  flex: 1;
+  height: 4rpx;
+  margin-top: 44rpx;
+  border-radius: 4rpx;
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.25), rgba(139, 92, 255, 0.25));
+  overflow: hidden;
+}
+
+.beam {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(95, 230, 255, 0.8), transparent);
+  width: 40%;
+  animation: beamMove 1.8s linear infinite;
+}
+
+@keyframes beamMove {
+  0% { left: -40%; }
+  100% { left: 100%; }
+}
+
+.spark {
+  position: absolute;
+  top: -5rpx;
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: #5fe6ff;
+  box-shadow: 0 0 14rpx #5fe6ff;
+  animation: sparkMove 2.2s linear infinite;
+}
+
+.spark.s2 {
+  animation-delay: 1.1s;
+  background: #b39bff;
+  box-shadow: 0 0 14rpx #b39bff;
+}
+
+@keyframes sparkMove {
+  0% { left: -8%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+.conn-tip {
+  margin-top: 28rpx;
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* ===== 卡片内容 ===== */
 .warn-card {
-  border-color: #f3d9a0;
-  background: #fffaf0;
+  border-color: rgba(255, 206, 106, 0.4);
+  background: linear-gradient(180deg, rgba(60, 45, 20, 0.6), rgba(30, 24, 16, 0.7));
 }
 
 .step-title {
   font-size: 30rpx;
   font-weight: 700;
+  color: #f1f4ff;
 }
 
 .card .muted {
@@ -24,7 +135,8 @@
   margin-top: 16rpx;
   display: flex;
   align-items: center;
-  background: #f8f2ec;
+  background: rgba(8, 14, 30, 0.7);
+  border: 1rpx solid rgba(120, 165, 255, 0.2);
   border-radius: 14rpx;
   padding: 16rpx 20rpx;
 }
@@ -33,7 +145,7 @@
   flex: 1;
   min-width: 0;
   font-size: 24rpx;
-  color: #5b4f47;
+  color: #8fb6ff;
   word-break: break-all;
   margin-right: 16rpx;
 }
@@ -46,8 +158,8 @@
   line-height: 60rpx;
   font-size: 24rpx;
   font-weight: 600;
-  color: #fff;
-  background: #e6442e;
+  color: #04122a;
+  background: linear-gradient(135deg, #22d3ee, #6d5cff);
   border-radius: 12rpx;
 }
 
@@ -62,37 +174,38 @@
 .step-item {
   display: flex;
   align-items: flex-start;
-  padding: 14rpx 0;
+  padding: 16rpx 0;
 }
 
 .step-item + .step-item {
-  border-top: 1rpx solid #f5ece6;
+  border-top: 1rpx solid rgba(120, 165, 255, 0.12);
 }
 
 .step-no {
   flex-shrink: 0;
-  width: 44rpx;
-  height: 44rpx;
+  width: 46rpx;
+  height: 46rpx;
   border-radius: 999rpx;
-  background: #0a0a0a;
-  color: #fff;
+  background: linear-gradient(135deg, #22d3ee, #6d5cff);
+  color: #04122a;
   font-size: 24rpx;
-  font-weight: 700;
+  font-weight: 800;
   text-align: center;
-  line-height: 44rpx;
+  line-height: 46rpx;
   margin-right: 18rpx;
+  box-shadow: 0 0 16rpx rgba(72, 160, 255, 0.4);
 }
 
 .step-text {
   flex: 1;
   font-size: 28rpx;
-  line-height: 1.6;
-  color: #333;
+  line-height: 1.7;
+  color: #c5cef0;
 }
 
 .detect-card {
-  border-color: #f3c6bc;
-  background: #fff6f3;
+  border-color: rgba(95, 230, 255, 0.4);
+  background: linear-gradient(180deg, rgba(18, 44, 64, 0.85), rgba(14, 24, 46, 0.9));
 }
 
 .detect-btn {

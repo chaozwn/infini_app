@@ -1,7 +1,183 @@
-.account-card {
-  margin-top: 8rpx;
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 8rpx 32rpx;
 }
 
+.hero-badge {
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(135deg, #22d3ee 0%, #6d5cff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56rpx;
+  margin-right: 24rpx;
+  box-shadow: 0 12rpx 30rpx rgba(72, 130, 255, 0.45);
+}
+
+.hero-title {
+  font-size: 44rpx;
+  font-weight: 800;
+  letter-spacing: 1rpx;
+}
+
+.hero-sub {
+  margin-top: 10rpx;
+  font-size: 23rpx;
+  color: #8b97c0;
+  letter-spacing: 0.5rpx;
+}
+
+/* ===== 远程连接链路 ===== */
+.link-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link-head-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #cdd8ff;
+}
+
+.link-status {
+  display: flex;
+  align-items: center;
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 999rpx;
+}
+
+.link-status .dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.link-status.on {
+  color: #34e2b0;
+  background: rgba(52, 226, 176, 0.12);
+  border: 1rpx solid rgba(52, 226, 176, 0.35);
+}
+
+.link-status.on .dot {
+  background: #34e2b0;
+  box-shadow: 0 0 12rpx #34e2b0;
+  animation: blink 1.4s ease-in-out infinite;
+}
+
+.link-status.off {
+  color: #ffce6a;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1rpx solid rgba(255, 206, 106, 0.35);
+}
+
+.link-status.off .dot {
+  background: #ffce6a;
+}
+
+.link-status.checking {
+  color: #5fe6ff;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1rpx solid rgba(95, 230, 255, 0.35);
+}
+
+.link-status.checking .dot {
+  background: #5fe6ff;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.link-diagram {
+  margin-top: 28rpx;
+  display: flex;
+  align-items: center;
+}
+
+.node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 130rpx;
+  flex-shrink: 0;
+}
+
+.node-icon {
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 24rpx;
+  background: rgba(56, 120, 255, 0.12);
+  border: 1rpx solid rgba(120, 165, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+}
+
+.node-label {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  color: #9aa6cf;
+}
+
+.link-line {
+  position: relative;
+  flex: 1;
+  height: 4rpx;
+  margin: 0 10rpx 36rpx;
+  border-radius: 4rpx;
+  background: linear-gradient(90deg, rgba(120, 165, 255, 0.15), rgba(120, 165, 255, 0.15));
+  overflow: hidden;
+}
+
+.link-line.active {
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.25), rgba(139, 92, 255, 0.25));
+}
+
+.pulse {
+  position: absolute;
+  top: -4rpx;
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: #5fe6ff;
+  box-shadow: 0 0 14rpx #5fe6ff;
+  opacity: 0;
+}
+
+.link-line.active .pulse {
+  animation: flow 1.8s linear infinite;
+}
+
+.link-line.active .pulse.p2 {
+  animation-delay: 0.6s;
+}
+
+.link-line.active .pulse.p3 {
+  animation-delay: 1.2s;
+}
+
+@keyframes flow {
+  0% { left: -6%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+.link-tip {
+  margin-top: 6rpx;
+  text-align: center;
+}
+
+/* ===== 账号卡 ===== */
 .account-row {
   display: flex;
   align-items: center;
@@ -11,7 +187,8 @@
   width: 96rpx;
   height: 96rpx;
   border-radius: 24rpx;
-  background: #fff1eb;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1rpx solid rgba(95, 230, 255, 0.28);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,32 +204,78 @@
 .account-phone {
   font-size: 36rpx;
   font-weight: 700;
+  color: #f1f4ff;
   margin-bottom: 12rpx;
 }
 
 .account-tip {
   margin-top: 24rpx;
   padding-top: 24rpx;
-  border-top: 1rpx solid #f5ece6;
+  border-top: 1rpx solid rgba(120, 165, 255, 0.14);
 }
 
 .tip-btn {
   margin-top: 20rpx;
 }
 
+/* ===== 操作卡 ===== */
 .step-title {
   font-size: 32rpx;
   font-weight: 700;
+  color: #f1f4ff;
 }
 
 .card .muted {
   margin-top: 12rpx;
 }
 
-.action-btn {
+.feature-row {
+  margin-top: 24rpx;
+  display: flex;
+  gap: 16rpx;
+}
+
+.feature-pill {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64rpx;
+  border-radius: 14rpx;
+  font-size: 24rpx;
+  color: #b9c5ee;
+  background: rgba(56, 120, 255, 0.08);
+  border: 1rpx solid rgba(120, 165, 255, 0.18);
+}
+
+.fp-icon {
+  margin-right: 8rpx;
+}
+
+.action-list {
   margin-top: 24rpx;
 }
 
-.logout-btn {
-  margin-top: 32rpx;
+.action-btn {
+  width: 100%;
+}
+
+.action-btn + .action-btn {
+  margin-top: 20rpx;
+}
+
+.btn-emoji {
+  margin-right: 12rpx;
+  font-size: 30rpx;
+}
+
+.logout-wrap {
+  text-align: center;
+  margin-top: 40rpx;
+}
+
+.logout-link {
+  font-size: 26rpx;
+  color: #6b76a0;
+  padding: 16rpx 32rpx;
 }

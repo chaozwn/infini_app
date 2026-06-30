@@ -13,29 +13,38 @@
 .label {
   font-size: 28rpx;
   font-weight: 600;
-  color: #2a2a2a;
+  color: #dbe3ff;
   margin-bottom: 12rpx;
 }
 
 .req {
-  color: #e6442e;
+  color: #5fe6ff;
 }
 
 .input {
-  background: #f8f2ec;
+  background: rgba(8, 14, 30, 0.7);
+  border: 1rpx solid rgba(120, 165, 255, 0.22);
   border-radius: 14rpx;
   padding: 20rpx;
   font-size: 28rpx;
+  color: #eaf0ff;
 }
 
 .textarea {
   width: 100%;
   box-sizing: border-box;
-  background: #f8f2ec;
+  background: rgba(8, 14, 30, 0.7);
+  border: 1rpx solid rgba(120, 165, 255, 0.22);
   border-radius: 14rpx;
   padding: 20rpx;
   font-size: 28rpx;
+  color: #eaf0ff;
   height: 140rpx;
+}
+
+.input-placeholder,
+.textarea-placeholder {
+  color: #5e6a92;
 }
 
 .chips {
@@ -48,16 +57,22 @@
 .chip {
   padding: 14rpx 28rpx;
   border-radius: 999rpx;
-  background: #f4ece6;
-  color: #5b4f47;
+  background: rgba(56, 120, 255, 0.08);
+  color: #aebbe6;
   font-size: 26rpx;
-  border: 1rpx solid #ece0d8;
+  border: 1rpx solid rgba(120, 165, 255, 0.2);
 }
 
 .chip-on {
-  background: #e6442e;
-  color: #fff;
-  border-color: #e6442e;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.22), rgba(139, 92, 255, 0.22));
+  color: #eaf6ff;
+  border-color: rgba(95, 230, 255, 0.7);
+  box-shadow: 0 0 18rpx rgba(72, 160, 255, 0.4);
+}
+
+.label .muted,
+.card .muted {
+  margin-top: 10rpx;
 }
 
 .submit-btn {

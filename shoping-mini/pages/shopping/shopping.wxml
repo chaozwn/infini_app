@@ -43,12 +43,12 @@
     <view class="label">看重什么</view>
     <view class="chips">
       <view
-        class="chip {{selectedPriorities.indexOf(item) >= 0 ? 'chip-on' : ''}}"
-        wx:for="{{priorityOptions}}"
-        wx:key="*this"
-        data-label="{{item}}"
+        class="chip {{item.selected ? 'chip-on' : ''}}"
+        wx:for="{{priorities}}"
+        wx:key="label"
+        data-index="{{index}}"
         bindtap="togglePriority"
-      >{{item}}</view>
+      >{{item.label}}</view>
     </view>
   </view>
 
@@ -57,10 +57,10 @@
     <view class="muted">只勾选你已经登录的平台，AI 才能进去比价。</view>
     <view class="chips">
       <view
-        class="chip {{selectedSites.indexOf(item.id) >= 0 ? 'chip-on' : ''}}"
+        class="chip {{item.selected ? 'chip-on' : ''}}"
         wx:for="{{sites}}"
         wx:key="id"
-        data-id="{{item.id}}"
+        data-index="{{index}}"
         bindtap="toggleSite"
       >{{item.label}}</view>
     </view>

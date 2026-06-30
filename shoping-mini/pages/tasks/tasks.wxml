@@ -1,18 +1,32 @@
 <view class="page">
-  <view class="title page-title">购物任务</view>
+  <view class="header">
+    <view class="title page-title">历史任务</view>
+    <text wx:if="{{tasks.length > 0}}" class="clear-btn" bindtap="clearAll">清空</text>
+  </view>
 
   <block wx:if="{{tasks.length > 0}}">
-    <view class="card task-item" wx:for="{{tasks}}" wx:key="taskId">
-      <view class="task-title">{{item.title || item.item || '购物任务'}}</view>
-      <view class="muted">{{item.status || ''}}</view>
+    <view class="card task-item" wx:for="{{tasks}}" wx:key="taskId"
+          data-task-id="{{item.taskId}}" bindtap="openTask">
+      <view class="task-row">
+        <view class="task-title">{{item.item}}</view>
+        <text class="task-del" catchtap="deleteTask" data-task-id="{{item.taskId}}">删除</text>
+      </view>
+      <view wx:if="{{item.priorities.length > 0}}" class="task-tags">
+        <text class="tag" wx:for="{{item.priorities}}" wx:for-item="p" wx:key="*this">{{p}}</text>
+      </view>
+      <view class="task-meta">
+        <text class="muted">{{item.createdAtText}}</text>
+        <text class="task-open">查看结果 ›</text>
+      </view>
     </view>
   </block>
 
   <block wx:else>
     <view class="card empty-card">
-      <view class="empty-emoji">🖥️</view>
-      <view class="empty-text">{{message || '暂无购物任务'}}</view>
-      <button class="btn btn-dark empty-btn" bindtap="goGuide">去 PC 安装插件并开始</button>
+      <view class="empty-emoji">🛍️</view>
+      <view class="empty-text">还没有历史任务</view>
+      <view class="empty-text">去检测插件并提交一单比价吧</view>
+      <button class="btn btn-dark empty-btn" bindtap="goGuide">去开始比价</button>
     </view>
   </block>
 </view>
