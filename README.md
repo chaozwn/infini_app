@@ -14,23 +14,19 @@
 
 ## 架构总览
 
-```text
-┌──────────────────┐     Bearer 会话      ┌────────────────────────────┐
-│  你的前端         │ ──────────────────► │  你的后端（BFF / API）       │
-│  表单 / 小程序    │                      │  - 校验用户会话              │
-│  展示 Markdown    │ ◄── JSON / 轮询 ──── │  - 持有用户 API Key（服务端） │
-└──────────────────┘                      │  - 提交 / 轮询 Agent 任务    │
-                                          └─────────────┬──────────────┘
-                                                        │ Authorization: Bearer sk-xxx
-                                                        ▼
-                                          ┌────────────────────────────┐
-                                          │  InfiniSynapse Agent        │
-                                          │  /api/ai/message           │
-                                          │  /api/ai_task/*            │
-                                          │  （可选 Database / RAG /    │
-                                          │   Browser Plugin）         │
-                                          └────────────────────────────┘
-```
+![InfiniSynapse 分层架构](./docs/images/architecture-overview.png)
+
+*应用负责入口与体验；InfiniSynapse 负责智能执行。*
+
+用户通过 Web / 小程序提交业务目标，你的 BFF 负责鉴权、Prompt 组装与 API Key 保管，再调用 InfiniSynapse 统一 Agent API；底座完成任务规划、推理执行与工具调用，并通过任务工作区返回进度与最终结果。
+
+### Vibe Coding 快速开发闭环
+
+![Vibe Coding 快速开发闭环](./docs/images/vibe-coding-loop.png)
+
+*从参考模版 → 业务外壳 → 能力开关 → Mock 联调 → 生产部署的完整路径。*
+
+本仓库对应图中左侧「参考模版」与底部「你的前端」；[`web-demo`](./web-demo) 与两个小程序示例可直接作为起点，按闭环补齐 BFF、Prompt、结果文件名与生产环境变量后即可上线。
 
 **安全原则（开源与生产都适用）**
 
@@ -157,6 +153,7 @@ CLI 也可管理任务与数据源，参见 InfiniSynapse 文档中的 `agent_in
 ```text
 .
 ├── README.md                 # 本接入指南
+├── docs/images/              # 架构示意图
 ├── LICENSE                   # MIT
 ├── web-demo/                 # 简化 Web 参考工程（优先阅读）
 ├── exam-mini/                # 微信小程序 · 高考选校
