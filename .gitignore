@@ -1,6 +1,7 @@
-# 环境变量与凭据
+# 环境变量与凭据（保留 *.example）
 .env
 .env.*
+!.env.example
 *.pem
 *.key
 *.p12
@@ -9,8 +10,12 @@
 # 微信开发者工具私有配置（含个人本地设置）
 project.private.config.json
 
-# 依赖
+# 依赖与构建产物
 node_modules/
+web-demo/.next/
+web-demo/out/
+dist/
+*.tsbuildinfo
 
 # 系统文件
 .DS_Store
