@@ -37,7 +37,6 @@ Page({
         method: 'POST',
         data: { code },
       })
-      console.log('[miniapp] login res', res)
       if (!res) {
         wx.showToast({ title: '返回数据为空', icon: 'none' })
         return
@@ -53,7 +52,6 @@ Page({
       }
       saveAccount(res.account)
     } catch (err) {
-      console.error('[miniapp] login error', err)
       wx.showToast({ title: '登录失败：' + (err && err.message || err), icon: 'none' })
     } finally {
       this.setData({ logging: false })
